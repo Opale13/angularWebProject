@@ -29,7 +29,7 @@ export class DisplayCategoriesComponent implements OnInit {
         this.categories = data.data;
       },
       (err) => {
-        console.log("error")
+        console.log(err);
       }
     );
   }
