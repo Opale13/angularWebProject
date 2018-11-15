@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { DisplayCategoriesComponent } from './components/display-categories/display-categories.component';
 import { ModifyCategoryComponent } from './components/modifyCategory/modify-category.component';
 import { CreateCategoryComponent } from './components/createCategory/create-category.component';
+import { DisplayTasksComponent } from './components/display-tasks/display-tasks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayCategoriesComponent,
     ModifyCategoryComponent,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    DisplayTasksComponent
   ],
   imports: [
     BrowserModule,

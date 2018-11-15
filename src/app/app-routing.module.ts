@@ -4,13 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { DisplayCategoriesComponent } from './components/display-categories/display-categories.component';
 import { ModifyCategoryComponent } from './components/modifyCategory/modify-category.component';
 import { CreateCategoryComponent } from './components/createCategory/create-category.component';
+import { DisplayTasksComponent } from './components/display-tasks/display-tasks.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/#', pathMatch: 'full' },
+  { path: '', redirectTo: '/tasks', pathMatch: 'full' },
   { path: 'categories', component: DisplayCategoriesComponent },
   { path: 'category/:id', component: ModifyCategoryComponent },
   { path: 'newCategory', component: CreateCategoryComponent },
+  { path: 'tasks', component: DisplayTasksComponent },
 ];
 
 @NgModule({
