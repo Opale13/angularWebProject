@@ -3,8 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, ObservableInput } from 'rxjs';
 import { Category } from 'src/app/classes/category';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,15 +15,23 @@ export class CategoryService {
     return this.http.get<Category[]>(this.url + '/categories', { responseType: 'json' });
   }
 
-  getCategory(id: number): Observable<Category> {
+  getCategory(id: string): Observable<Category> {
     return this.http.get<Category>(this.url + '/category/' + id, { responseType: 'json' });
   }
 
-  updateCategory(id: number, category: Category): Observable<any> {
+  putCategory(id: number, category: Category): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
     return this.http.put(this.url + '/modifyCategory/' + id, category, httpOptions)
+  }
+
+  postCategory(category: Category): Observable<Category> {    
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    return this.http.post<Category>(this.url + '/createCategory', category, httpOptions);
   }
 }

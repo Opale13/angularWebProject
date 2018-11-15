@@ -1,0 +1,14 @@
+<form style="width:25%;" (ngSubmit)="onSubmit()">
+  <div class="form-group has-success">
+    <label class="form-control-label">Title</label>
+    <input type="text" class="form-control is-valid" [(ngModel)]="newCategory.title" name="title">
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" rows="3" [(ngModel)]="newCategory.description" name="description"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+  

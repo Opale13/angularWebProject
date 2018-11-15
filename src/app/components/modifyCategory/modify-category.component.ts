@@ -33,7 +33,7 @@ export class ModifyCategoryComponent implements OnInit {
   }
 
   onSubmit() {
-    this.categoryService.updateCategory(this.category.id, this.category).subscribe(
+    this.categoryService.putCategory(this.category.id, this.category).subscribe(
       (data) => {
         this.router.navigate(['/categories']);
       }

@@ -2,17 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DisplayCategoriesComponent } from './components/display-categories/display-categories.component';
-import { AppRoutingModule } from './app-routing.module';
-import { ModifyCategoryComponent } from './components/modifyCategory/modify-category/modify-category.component';
+import { ModifyCategoryComponent } from './components/modifyCategory/modify-category.component';
+import { CreateCategoryComponent } from './components/createCategory/create-category.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayCategoriesComponent,
-    ModifyCategoryComponent
+    ModifyCategoryComponent,
+    CreateCategoryComponent
   ],
   imports: [
     BrowserModule,
