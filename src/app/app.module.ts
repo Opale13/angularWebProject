@@ -9,6 +9,7 @@ import { DisplayCategoriesComponent } from './components/display-categories/disp
 import { ModifyCategoryComponent } from './components/modifyCategory/modify-category.component';
 import { CreateCategoryComponent } from './components/createCategory/create-category.component';
 import { DisplayTasksComponent } from './components/display-tasks/display-tasks.component';
+import { ModifyTaskComponent } from './components/modifyTask/modify-task.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DisplayTasksComponent } from './components/display-tasks/display-tasks.
     DisplayCategoriesComponent,
     ModifyCategoryComponent,
     CreateCategoryComponent,
-    DisplayTasksComponent
+    DisplayTasksComponent,
+    ModifyTaskComponent
   ],
   imports: [
     BrowserModule,

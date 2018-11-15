@@ -17,7 +17,7 @@ export class ModifyCategoryComponent implements OnInit {
               private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.getCategory()
+    this.getCategory();
   }
 
   getCategory() {

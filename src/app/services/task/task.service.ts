@@ -18,4 +18,12 @@ export class TaskService {
   getTask(id: string): Observable<Task> {
     return this.http.get<Task>(this.url + '/task/' + id, { responseType: 'json' });
   }
+
+  putTask(id: number, task): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    return this.http.put(this.url + '/modifyTask/' + id, task, httpOptions)
+  }
 }
