@@ -27,11 +27,15 @@ export class CategoryService {
     return this.http.put(this.url + '/modifyCategory/' + id, category, httpOptions)
   }
 
-  postCategory(category: Category): Observable<Category> {    
+  postCategory(category: Category): Observable<any> {    
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
     return this.http.post<Category>(this.url + '/createCategory', category, httpOptions);
+  }
+
+  deleteCategory(id): Observable<any> {
+    return this.http.delete(this.url +  '/deleteCategory/' + id)
   }
 }
