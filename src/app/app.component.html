@@ -7,13 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#" (click)='setPage("tasks")'>Tasks <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#">Tasks <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#" (click)='setPage("categories")'>Categories <span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/categories">Categories <span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
 </nav>
 
-<app-display-categories *ngIf="displayPage==='categories'"></app-display-categories>
+<router-outlet></router-outlet>

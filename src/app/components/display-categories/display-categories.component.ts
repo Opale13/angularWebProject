@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
 import { Category } from 'src/app/classes/category';
+import { CategoryService } from 'src/app/services/category/category.service'
 
 @Component({
   selector: 'app-display-categories',
@@ -10,23 +8,18 @@ import { Category } from 'src/app/classes/category';
   styleUrls: ['./display-categories.component.css']
 })
 export class DisplayCategoriesComponent implements OnInit {
-  private url = "http://localhost/webProject/public/index.php/api";
   categories: Category[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.getCategories();
   }
 
-  getServiceCatergories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.url + '/categories', { responseType: 'json' });
-  }
-
   getCategories() {
-    this.getServiceCatergories().subscribe(
+    this.categoryService.getCategories().subscribe(
       (data) => {
-        this.categories = data.data;
+        this.categories = data;
       },
       (err) => {
         console.log(err);

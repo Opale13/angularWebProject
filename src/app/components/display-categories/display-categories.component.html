@@ -8,7 +8,7 @@
   </div>
 
   <div style="padding: 0px 0px 30px 0px;">
-    <a class="btn btn-primary" href="http://localhost/webProject/public/index.php/modifyCategory/{{ category.id }}"> Modify </a>
+    <a class="btn btn-primary" [routerLink]="['/category', category.id]"> Modify </a>
     <a class="btn btn-primary" href="http://localhost/webProject/public/index.php/deleteCategory/{{ category.id }}"> Delete </a>
   </div>
 </div>
