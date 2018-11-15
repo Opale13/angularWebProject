@@ -29,4 +29,25 @@ export class DisplayTasksComponent implements OnInit {
     );
   } 
 
+  deleteTask(id) {
+    this.taskService.deleteTask(id).subscribe(
+      (data) => {
+        if (data.valid == true) {
+          let i=0;
+          for (i; i<this.tasks.length; i++) {
+            if (this.tasks[i].id == id) {
+              this.tasks.splice(i, 1);
+            }
+          }
+
+          console.log(this.tasks);
+
+          this.router.navigate(['/tasks']);
+        }
+        else{
+          console.log("error");
+        }
+      }
+    );
+  }
 }

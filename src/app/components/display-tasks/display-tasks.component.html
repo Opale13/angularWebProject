@@ -1,16 +1,16 @@
 <div *ngFor="let task of tasks">
     <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-       <div class="card-header">{{ task.title }}</div>
-       
-       <div class="card-body">
-         <p class="card-text">{{ task.description }}</p>
-         <span class="badge badge-pill badge-light">{{task.fkCategory.title}}</span>
-         <span class="badge badge-pill badge-light">{{task.fkState.name}}</span>
-       </div>
-     </div>
+      <div class="card-header">{{ task.title }}</div>
+      
+      <div class="card-body">
+        <p class="card-text">{{ task.description }}</p>
+        <span class="badge badge-pill badge-light">{{task.fkCategory.title}}</span>
+        <span class="badge badge-pill badge-light">{{task.fkState.name}}</span>
+      </div>
+    </div>
    
-     <div style="padding: 0px 0px 30px 0px;">
-       <a class="btn btn-primary" [routerLink]="['/task', task.id]">Modify</a>
-<!--        <button class="btn btn-primary" (click)="deleteCategory(category.id)">Delete</button>
- -->     </div>
+    <div style="padding: 0px 0px 30px 0px;">
+      <a class="btn btn-primary" [routerLink]="['/task', task.id]">Modify</a>
+      <button class="btn btn-primary" (click)="deleteTask(task.id)">Delete</button>
+    </div>
    </div>
