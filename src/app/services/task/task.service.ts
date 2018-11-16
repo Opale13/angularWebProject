@@ -27,6 +27,14 @@ export class TaskService {
     return this.http.put(this.url + '/modifyTask/' + id, task, httpOptions)
   }
 
+  postTask(task): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    return this.http.post<Task>(this.url + '/createTask', task, httpOptions);
+  }
+
   deleteTask(id): Observable<any> {
     return this.http.delete(this.url +  '/deleteTask/' + id)
   }

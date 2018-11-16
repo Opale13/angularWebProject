@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from 'src/app/services/category/category.service'
+import { CategoryService } from 'src/app/services/category/category.service';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/classes/category';
 
@@ -9,7 +9,7 @@ import { Category } from 'src/app/classes/category';
   styleUrls: ['./create-category.component.css']
 })
 export class CreateCategoryComponent implements OnInit {
-  newCategory: Category
+  newCategory: Category;
 
   constructor(private router: Router,
               private categoryService: CategoryService) { 
@@ -19,7 +19,7 @@ export class CreateCategoryComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
+  onSubmit() {
     this.categoryService.postCategory(this.newCategory).subscribe(
       (data) => {
         if (data.valid == true) {

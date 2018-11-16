@@ -6,6 +6,7 @@ import { ModifyCategoryComponent } from './components/modifyCategory/modify-cate
 import { CreateCategoryComponent } from './components/createCategory/create-category.component';
 import { DisplayTasksComponent } from './components/display-tasks/display-tasks.component';
 import { ModifyTaskComponent } from './components/modifyTask/modify-task.component';
+import { CreateTaskComponent } from './components/createTask/create-task.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/tasks', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'newCategory', component: CreateCategoryComponent },
   { path: 'tasks', component: DisplayTasksComponent },
   { path: 'task/:id', component: ModifyTaskComponent },
+  { path: 'newTask', component: CreateTaskComponent },
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -10,6 +10,7 @@ import { ModifyCategoryComponent } from './components/modifyCategory/modify-cate
 import { CreateCategoryComponent } from './components/createCategory/create-category.component';
 import { DisplayTasksComponent } from './components/display-tasks/display-tasks.component';
 import { ModifyTaskComponent } from './components/modifyTask/modify-task.component';
+import { CreateTaskComponent } from './components/createTask/create-task.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ModifyTaskComponent } from './components/modifyTask/modify-task.compone
     ModifyCategoryComponent,
     CreateCategoryComponent,
     DisplayTasksComponent,
-    ModifyTaskComponent
+    ModifyTaskComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,

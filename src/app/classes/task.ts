@@ -7,4 +7,9 @@ export class Task {
     public description: string;
     public fkCategory: Category;
     public fkState: State;
+
+    constructor() {
+        this.fkCategory = new Category();
+        this.fkState = new State();
+    }
 }

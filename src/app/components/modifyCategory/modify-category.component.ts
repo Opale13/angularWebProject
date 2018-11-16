@@ -10,7 +10,7 @@ import { Category } from 'src/app/classes/category';
   styleUrls: ['./modify-category.component.css']
 })
 export class ModifyCategoryComponent implements OnInit {
-  category: Category
+  category: Category;
 
   constructor(private route: ActivatedRoute,
               private router: Router,

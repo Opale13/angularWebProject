@@ -13,7 +13,7 @@ import { State } from 'src/app/classes/state';
 })
 export class ModifyTaskComponent implements OnInit {
   task: Task;
-  categories: Category[]; 
+  categories: Category[];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -21,7 +21,6 @@ export class ModifyTaskComponent implements OnInit {
               private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.task = new Task();
     this.getTask();
     this.getCategories();
   }
