@@ -5,6 +5,7 @@ import { Task } from 'src/app/classes/task';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Category } from 'src/app/classes/category';
 import { State } from 'src/app/classes/state';
+import { StateService } from 'src/app/services/state/state.service';
 
 @Component({
   selector: 'app-modify-task',
@@ -14,15 +15,18 @@ import { State } from 'src/app/classes/state';
 export class ModifyTaskComponent implements OnInit {
   task: Task;
   categories: Category[];
+  states: State[];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private taskService: TaskService,
+              private stateService: StateService,
               private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.getTask();
     this.getCategories();
+    this.getState();
   }
 
   getTask() {
@@ -41,6 +45,17 @@ export class ModifyTaskComponent implements OnInit {
     this.categoryService.getCategories().subscribe(
       (data) => {
         this.categories = data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  getState() {
+    this.stateService.getStates().subscribe(
+      (data) => {
+        this.states = data;
       },
       (err) => {
         console.log(err);

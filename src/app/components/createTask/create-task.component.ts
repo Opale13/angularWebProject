@@ -5,8 +5,8 @@ import { TaskService } from 'src/app/services/task/task.service';
 import { CategoryService } from 'src/app/services/category/category.service';
 import { Category } from 'src/app/classes/category';
 import { State } from 'src/app/classes/state';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { StateService } from 'src/app/services/state/state.service';
 
 @Component({
   selector: 'app-create-task',
@@ -21,6 +21,7 @@ export class CreateTaskComponent implements OnInit {
   constructor(private router: Router,
               private taskService: TaskService,
               private categoryService: CategoryService,
+              private stateService: StateService,
               private http: HttpClient) { this.newTask = new Task(); }
 
   ngOnInit() {
@@ -57,14 +58,8 @@ export class CreateTaskComponent implements OnInit {
     );
   }
 
-  getStatesService(): Observable<State[]> {
-    let url = "http://localhost/webProject/public/index.php/api";
-
-    return this.http.get<State[]>(url + '/states', { responseType: 'json' });
-  }
-
   getStates() {
-    this.getStatesService().subscribe(
+    this.stateService.getStates().subscribe(
       (data) => {
         this.states = data;
       },
