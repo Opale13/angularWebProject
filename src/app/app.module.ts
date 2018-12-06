@@ -11,6 +11,7 @@ import { CreateCategoryComponent } from './components/createCategory/create-cate
 import { DisplayTasksComponent } from './components/display-tasks/display-tasks.component';
 import { ModifyTaskComponent } from './components/modifyTask/modify-task.component';
 import { CreateTaskComponent } from './components/createTask/create-task.component';
+import { ModalDeleteComponent } from './components/modal-delete/modal-delete.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CreateTaskComponent } from './components/createTask/create-task.compone
     CreateCategoryComponent,
     DisplayTasksComponent,
     ModifyTaskComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    ModalDeleteComponent
   ],
   imports: [
     BrowserModule,

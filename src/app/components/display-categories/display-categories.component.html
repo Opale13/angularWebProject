@@ -9,6 +9,11 @@
 
   <div style="padding: 0px 0px 30px 0px;">
     <a class="btn btn-primary" [routerLink]="['/category', category.id]">Modify</a>
-    <button class="btn btn-primary" (click)="deleteCategory(category.id)">Delete</button>
+    <button class="btn btn-primary" (click)="showAlert(category.id)">Delete</button>
   </div>
+
+  <app-modal-delete style="display:none;" id='{{category.id}}' 
+                    (delete)="deleteCategory(category.id)" 
+                    (cancel)="showAlert(category.id)">
+  </app-modal-delete>
 </div>

@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/services/category/category.service'
   styleUrls: ['./display-categories.component.css']
 })
 export class DisplayCategoriesComponent implements OnInit {
+  show: boolean = false;
   categories: Category[];
 
   constructor(private categoryService: CategoryService,
@@ -29,7 +30,15 @@ export class DisplayCategoriesComponent implements OnInit {
     );
   }
 
+  showAlert(id) {
+    let display = document.getElementById(id).style.display;
+    
+    if (display == "block") { document.getElementById(id).style.display = "none"; }
+    else { document.getElementById(id).style.display = "block"; }
+  }
+
   deleteCategory(id) {
+    this.show = false;
     this.categoryService.deleteCategory(id).subscribe(
       (data) => {
         if (data.valid == true) {
