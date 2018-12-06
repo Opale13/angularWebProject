@@ -29,6 +29,13 @@ export class DisplayTasksComponent implements OnInit {
     );
   } 
 
+  showAlert(id) {
+    let display = document.getElementById(id).style.display;
+    
+    if (display == "block") { document.getElementById(id).style.display = "none"; }
+    else { document.getElementById(id).style.display = "block"; }
+  }
+
   deleteTask(id) {
     this.taskService.deleteTask(id).subscribe(
       (data) => {
