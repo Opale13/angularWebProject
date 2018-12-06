@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { TaskService } from 'src/app/services/task/task.service';
 import { Router } from '@angular/router';
 import { Task } from 'src/app/classes/task';
+import { Category } from 'src/app/classes/category';
+import { CategoryService } from 'src/app/services/category/category.service';
 
 @Component({
   selector: 'app-display-tasks',
@@ -10,12 +12,16 @@ import { Task } from 'src/app/classes/task';
 })
 export class DisplayTasksComponent implements OnInit {
   tasks: Task[]
+  categories: Category[];
+  search: string = "All";
 
   constructor(private taskService: TaskService,
+              private categoryService: CategoryService,
               private router: Router) { }
 
   ngOnInit() {
     this.getTasks();
+    this.getCategories();
   }
 
   getTasks() {
@@ -28,6 +34,17 @@ export class DisplayTasksComponent implements OnInit {
       }
     );
   } 
+
+  getCategories() {
+    this.categoryService.getCategories().subscribe(
+      (data) => {
+        this.categories = data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   showAlert(id) {
     let display = document.getElementById(id).style.display;
@@ -58,3 +75,4 @@ export class DisplayTasksComponent implements OnInit {
     );
   }
 }
+

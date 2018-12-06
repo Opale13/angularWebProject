@@ -1,6 +1,16 @@
-<div *ngFor="let task of tasks">
+<form style="width:25%; padding: 0px 0px 20px 0px;">
+  <div class="form-group">
+    <select class="form-control" id="exampleSelect1" [(ngModel)]="search" name="categories">
+        <option value="All">All card</option>
+        <option *ngFor="let category of categories" [ngValue]="category.title">{{ category.title }}</option>
+    </select>
+  </div>
+</form>
+
+
+<div *ngFor="let task of tasks|sortTasks:search">
   <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-    <div class="card-header">{{ task.title }}</div>
+    <div class="card-header">{{ task.title}}</div>
     
     <div class="card-body">
       <p class="card-text">{{ task.description }}</p>
@@ -9,7 +19,7 @@
     </div>
   </div>
   
-  <div style="padding: 0px 0px 10px 0px;">
+  <div style="padding: 0px 0px 20px 0px;">
     <a class="btn btn-primary" [routerLink]="['/task', task.id]">Modify</a>
     <button class="btn btn-primary" (click)="showAlert(task.id)">Delete</button>
   </div>
@@ -18,5 +28,4 @@
                     (delete)="deleteTask(task.id)" 
                     (cancel)="showAlert(task.id)">
   </app-modal-delete>
-
 </div>

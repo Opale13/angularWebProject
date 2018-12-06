@@ -12,6 +12,7 @@ import { DisplayTasksComponent } from './components/display-tasks/display-tasks.
 import { ModifyTaskComponent } from './components/modifyTask/modify-task.component';
 import { CreateTaskComponent } from './components/createTask/create-task.component';
 import { ModalDeleteComponent } from './components/modal-delete/modal-delete.component';
+import { SortTaskPipe } from './pipes/sort-task.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ModalDeleteComponent } from './components/modal-delete/modal-delete.com
     DisplayTasksComponent,
     ModifyTaskComponent,
     CreateTaskComponent,
-    ModalDeleteComponent
+    ModalDeleteComponent,
+    SortTaskPipe
   ],
   imports: [
     BrowserModule,
