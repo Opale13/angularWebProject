@@ -25,11 +25,13 @@ export class CreateTaskComponent implements OnInit {
               private http: HttpClient) { this.newTask = new Task(); }
 
   ngOnInit() {
+    /* we recover the categories and states for form's select */
     this.getCategories();
     this.getStates();
   }
 
   getCategories() {
+    /* Recover the categories */
     this.categoryService.getCategories().subscribe(
       (data) => {
         this.categories = data;
@@ -40,7 +42,21 @@ export class CreateTaskComponent implements OnInit {
     );
   }
 
+  getStates() {
+    /* Recover the states */
+    this.stateService.getStates().subscribe(
+      (data) => {
+        this.states = data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   onSubmit() {
+    /* Function activates by submit button */
+
     let newTask = {
       'title': this.newTask.title,
       'description': this.newTask.description,
@@ -48,7 +64,10 @@ export class CreateTaskComponent implements OnInit {
       'fkState': this.newTask.fkState.id
     };
     
+    /* Check in first if the object are not undefined */
     if (newTask.title !== undefined && newTask.description !== undefined && newTask.fkCategory !== undefined && newTask.fkState!== undefined) {
+      
+      /* In second, we check if the fields are a good format */
       if (newTask.title.length !== 0 && newTask.description.length !== 0 && newTask.fkCategory >= 0 && newTask.fkState >= 0) {
         this.taskService.postTask(newTask).subscribe(
           (data) => {
@@ -60,16 +79,4 @@ export class CreateTaskComponent implements OnInit {
       } else { document.getElementById('form-error').style.display = "block"; }
     } else { document.getElementById('form-error').style.display = "block"; }
   }
-
-  getStates() {
-    this.stateService.getStates().subscribe(
-      (data) => {
-        this.states = data;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-
 }

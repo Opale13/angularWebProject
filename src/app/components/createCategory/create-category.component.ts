@@ -20,7 +20,12 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   onSubmit() {
+    /* Function activates by submit button */
+
+    /* Check in first if the object are not undefined */
     if (this.newCategory.title !== undefined && this.newCategory.description !== undefined) {
+
+      /* In second, we check if the fields are a good format*/
       if (this.newCategory.title.length !== 0 && this.newCategory.description.length !== 0) {
         this.categoryService.postCategory(this.newCategory).subscribe(
           (data) => {

@@ -16,10 +16,12 @@ export class DisplayCategoriesComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    /* Recover the categories to display */
     this.getCategories();
   }
 
   getCategories() {
+    /* Recover the categories */
     this.categoryService.getCategories().subscribe(
       (data) => {
         this.categories = data;
@@ -31,6 +33,7 @@ export class DisplayCategoriesComponent implements OnInit {
   }
 
   showAlert(id) {
+    /* Function to display the selector to confirm the deletion */
     let display = document.getElementById(id).style.display;
     
     if (display == "block") { document.getElementById(id).style.display = "none"; }
@@ -38,18 +41,18 @@ export class DisplayCategoriesComponent implements OnInit {
   }
 
   deleteCategory(id) {
+    /* Delete the category into database */
     this.show = false;
     this.categoryService.deleteCategory(id).subscribe(
       (data) => {
         if (data.valid == true) {
+          /* Remove the category into table categories */
           let i=0;
           for (i; i<this.categories.length; i++) {
             if (this.categories[i].id == id) {
               this.categories.splice(i, 1);
             }
           }
-
-          console.log(this.categories);
 
           this.router.navigate(['/categories']);
         }
