@@ -33,10 +33,14 @@ export class ModifyCategoryComponent implements OnInit {
   }
 
   onSubmit() {
-    this.categoryService.putCategory(this.category.id, this.category).subscribe(
-      (data) => {
-        this.router.navigate(['/categories']);
-      }
-    );
+    if (this.category.title.length !== 0 && this.category.description.length !== 0) {
+      this.categoryService.putCategory(this.category.id, this.category).subscribe(
+        (data) => {
+          if (data.valid === true) {
+            this.router.navigate(['/categories']);
+          } else { document.getElementById('send-error').style.display = "block"; }
+        }        
+      );
+    } else { document.getElementById('form-error').style.display = "block"; }
   }
 }

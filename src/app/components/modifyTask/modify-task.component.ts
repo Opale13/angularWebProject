@@ -71,10 +71,17 @@ export class ModifyTaskComponent implements OnInit {
       'fkState': this.task.fkState.id
     };
 
-    this.taskService.putTask(this.task.id, newTask).subscribe(
-      (data) => {
-        this.router.navigate(['/tasks']);
-      }
-    );
+    if (newTask.title !== undefined && newTask.description !== undefined && newTask.fkCategory !== undefined && newTask.fkState!== undefined) {
+      if (newTask.title.length !== 0 && newTask.description.length !== 0 && newTask.fkCategory >= 0 && newTask.fkState >= 0) {
+        this.taskService.putTask(this.task.id, newTask).subscribe(
+          (data) => {
+            if (data.valid === true) {
+              this.router.navigate(['/tasks']);
+            } else { document.getElementById('send-error').style.display = "block"; }
+          }
+        );
+      } else { document.getElementById('form-error').style.display = "block"; }
+    } else { document.getElementById('form-error').style.display = "block"; }
+        
   }
 }
