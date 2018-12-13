@@ -20,16 +20,24 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   onSubmit() {
-    this.categoryService.postCategory(this.newCategory).subscribe(
-      (data) => {
-        if (data.valid == true) {
-          this.router.navigate(['/categories']);
-        }
-        else {
-          console.log("error");
-        }
+    if (this.newCategory.title !== undefined && this.newCategory.description !== undefined) {
+      if (this.newCategory.title.length == 0 && this.newCategory.description.length != 0) {
+        this.categoryService.postCategory(this.newCategory).subscribe(
+          (data) => {
+            if (data.valid == true) {
+              this.router.navigate(['/categories']);
+            }
+            else {
+              console.log("error");
+            }
+          }
+        );
+      } else {
+        document.getElementById('form-error').style.display = "block";
       }
-    );
+    } else {
+      document.getElementById('form-error').style.display = "block";
+    }
   }
 
 }

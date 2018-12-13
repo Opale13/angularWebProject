@@ -48,14 +48,23 @@ export class CreateTaskComponent implements OnInit {
       'fkState': this.newTask.fkState.id
     };
 
-    this.taskService.postTask(newTask).subscribe(
-      (data) => {
-        if (data.valid === true) {
-          this.router.navigate(['/tasks']);
-        }
-        else { console.log("error"); }
+    if (newTask.title !== undefined && newTask.description !== undefined && newTask == undefined && newTask == undefined) {
+      if (newTask.title.length !== 0 && newTask.description.length !== 0 && newTask.fkState >= 0 && newTask.fkState >= 0) {
+        this.taskService.postTask(newTask).subscribe(
+          (data) => {
+            if (data.valid === true) {
+              this.router.navigate(['/tasks']);
+            }
+            else { console.log("error"); }
+          }
+        );
+      } else {
+        document.getElementById('form-error').style.display = "block";
       }
-    );
+    }else {
+      document.getElementById('form-error').style.display = "block";
+    }
+
   }
 
   getStates() {
