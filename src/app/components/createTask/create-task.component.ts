@@ -13,25 +13,37 @@ import { StateService } from 'src/app/services/state/state.service';
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.css']
 })
+/**
+* Component for creating a new task
+*/
 export class CreateTaskComponent implements OnInit {
   newTask: Task;
   categories: Category[];
   states: State[];
 
+  /**
+  * Construct the component
+  *
+  * @param {Router} router
+  * @param {TaskService} taskService
+  * @param {CategoryService} categoryService
+  * @param {StateService} stateService
+  * @param {HttpClient} http
+  */
   constructor(private router: Router,
               private taskService: TaskService,
               private categoryService: CategoryService,
               private stateService: StateService,
               private http: HttpClient) { this.newTask = new Task(); }
 
+  /** Recover the categories and states for form's select */
   ngOnInit() {
-    /* we recover the categories and states for form's select */
     this.getCategories();
     this.getStates();
   }
 
+  /** Recover the categories */
   getCategories() {
-    /* Recover the categories */
     this.categoryService.getCategories().subscribe(
       (data) => {
         this.categories = data;
@@ -42,8 +54,8 @@ export class CreateTaskComponent implements OnInit {
     );
   }
 
+  /** Recover the states */
   getStates() {
-    /* Recover the states */
     this.stateService.getStates().subscribe(
       (data) => {
         this.states = data;
@@ -54,19 +66,18 @@ export class CreateTaskComponent implements OnInit {
     );
   }
 
+  /** Function activates by submit button */
   onSubmit() {
-    /* Function activates by submit button */
-
     let newTask = {
       'title': this.newTask.title,
       'description': this.newTask.description,
       'fkCategory': this.newTask.fkCategory.id,
       'fkState': this.newTask.fkState.id
     };
-    
+
     /* Check in first if the object are not undefined */
     if (newTask.title !== undefined && newTask.description !== undefined && newTask.fkCategory !== undefined && newTask.fkState!== undefined) {
-      
+
       /* In second, we check if the fields are a good format */
       if (newTask.title.length !== 0 && newTask.description.length !== 0 && newTask.fkCategory >= 0 && newTask.fkState >= 0) {
         this.taskService.postTask(newTask).subscribe(

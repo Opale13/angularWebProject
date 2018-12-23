@@ -2,7 +2,7 @@
 <div *ngFor="let category of categories">
  <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
     <div class="card-header">{{ category.title }}</div>
-    
+
     <div class="card-body">
       <p class="card-text">{{ category.description }}</p>
     </div>
@@ -14,8 +14,8 @@
   </div>
 
   <!-- Selector to confirm the deletion -->
-  <app-modal-delete style="padding: 0px 0px 40px 0px; display:none;" id='{{category.id}}' 
-                    (delete)="deleteCategory(category.id)" 
+  <app-modal-delete style="padding: 0px 0px 40px 0px; display:none;" id='{{category.id}}'
+                    (delete)="deleteCategory(category.id)"
                     (cancel)="showAlert(category.id)">
   </app-modal-delete>
 </div>

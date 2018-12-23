@@ -8,20 +8,29 @@ import { CategoryService } from 'src/app/services/category/category.service'
   templateUrl: './display-categories.component.html',
   styleUrls: ['./display-categories.component.css']
 })
+/**
+* Component to display categories
+*/
 export class DisplayCategoriesComponent implements OnInit {
   show: boolean = false;
   categories: Category[];
 
+  /**
+  * Construct the component
+  *
+  * @param {CategoryService} categoryService
+  * @param {Router} router
+  */
   constructor(private categoryService: CategoryService,
               private router: Router) { }
 
+  /** Recover the categories to display */
   ngOnInit() {
-    /* Recover the categories to display */
     this.getCategories();
   }
 
+  /** Recover the categories */
   getCategories() {
-    /* Recover the categories */
     this.categoryService.getCategories().subscribe(
       (data) => {
         this.categories = data;
@@ -32,16 +41,16 @@ export class DisplayCategoriesComponent implements OnInit {
     );
   }
 
+  /** Display the selector to confirm the deletion */
   showAlert(id) {
-    /* Function to display the selector to confirm the deletion */
     let display = document.getElementById(id).style.display;
-    
+
     if (display == "block") { document.getElementById(id).style.display = "none"; }
     else { document.getElementById(id).style.display = "block"; }
   }
 
+  /** Delete the category into database */
   deleteCategory(id) {
-    /* Delete the category into database */
     this.show = false;
     this.categoryService.deleteCategory(id).subscribe(
       (data) => {
@@ -53,12 +62,9 @@ export class DisplayCategoriesComponent implements OnInit {
               this.categories.splice(i, 1);
             }
           }
-
           this.router.navigate(['/categories']);
         }
-        else{
-          console.log("error");
-        }
+        else{ console.log("error"); }
       }
     );
   }

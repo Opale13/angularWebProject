@@ -8,19 +8,22 @@ import { Category } from 'src/app/classes/category';
   templateUrl: './create-category.component.html',
   styleUrls: ['./create-category.component.css']
 })
+/**
+* Composant for creating a category
+*/
 export class CreateCategoryComponent implements OnInit {
   newCategory: Category;
 
   constructor(private router: Router,
-              private categoryService: CategoryService) { 
+              private categoryService: CategoryService) {
     this.newCategory = new Category();
   }
 
   ngOnInit() {
   }
 
+  /** Function activates by submit button */
   onSubmit() {
-    /* Function activates by submit button */
 
     /* Check in first if the object are not undefined */
     if (this.newCategory.title !== undefined && this.newCategory.description !== undefined) {

@@ -12,23 +12,37 @@ import { StateService } from 'src/app/services/state/state.service';
   templateUrl: './modify-task.component.html',
   styleUrls: ['./modify-task.component.css']
 })
+/**
+* Component to modify a task
+*/
 export class ModifyTaskComponent implements OnInit {
   task: Task;
   categories: Category[];
   states: State[];
 
+  /**
+  * Construct the component
+  *
+  * @param {ActivatedRoute} route
+  * @param {Router} router
+  * @param {TaskService} taskService
+  * @param {StateService} stateService
+  * @param {CategoryService} categoryService
+  */
   constructor(private route: ActivatedRoute,
               private router: Router,
               private taskService: TaskService,
               private stateService: StateService,
               private categoryService: CategoryService) { }
 
+  /** Recover one task, categories and states to display */
   ngOnInit() {
     this.getTask();
     this.getCategories();
     this.getState();
   }
 
+  /** Recover the task to display with the id in URL */
   getTask() {
     let id = this.route.snapshot.paramMap.get('id');
     this.taskService.getTask(id).subscribe(
@@ -41,6 +55,7 @@ export class ModifyTaskComponent implements OnInit {
     );
   }
 
+  /** Recover the categories */
   getCategories() {
     this.categoryService.getCategories().subscribe(
       (data) => {
@@ -52,6 +67,7 @@ export class ModifyTaskComponent implements OnInit {
     );
   }
 
+  /** Recover the states */
   getState() {
     this.stateService.getStates().subscribe(
       (data) => {
@@ -63,6 +79,7 @@ export class ModifyTaskComponent implements OnInit {
     );
   }
 
+  /** Confirm the modification */
   onSubmit() {
     let newTask = {
       'title': this.task.title,
@@ -82,6 +99,6 @@ export class ModifyTaskComponent implements OnInit {
         );
       } else { document.getElementById('form-error').style.display = "block"; }
     } else { document.getElementById('form-error').style.display = "block"; }
-        
+
   }
 }

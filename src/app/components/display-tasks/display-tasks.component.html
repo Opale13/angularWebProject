@@ -1,3 +1,4 @@
+<!-- Selector to choose the filter -->
 <form style="width:25%; padding: 0px 0px 20px 0px;">
   <div class="form-group">
     <select class="form-control" id="exampleSelect1" [(ngModel)]="search" name="categories">
@@ -7,25 +8,26 @@
   </div>
 </form>
 
-
+<!-- Display the task cards -->
 <div *ngFor="let task of tasks|sortTasks:search">
   <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
     <div class="card-header">{{ task.title}}</div>
-    
+
     <div class="card-body">
       <p class="card-text">{{ task.description }}</p>
       <span class="badge badge-pill badge-light">{{task.fkCategory.title}}</span>
       <span class="badge badge-pill badge-light">{{task.fkState.name}}</span>
     </div>
   </div>
-  
+
   <div style="padding: 0px 0px 20px 0px;">
     <a class="btn btn-primary" [routerLink]="['/task', task.id]">Modify</a>
     <button class="btn btn-primary" (click)="showAlert(task.id)">Delete</button>
   </div>
 
-  <app-modal-delete style="padding: 0px 0px 40px 0px; display:none;" id='{{task.id}}' 
-                    (delete)="deleteTask(task.id)" 
+  <!-- Selector to confirm the deletion -->
+  <app-modal-delete style="padding: 0px 0px 40px 0px; display:none;" id='{{task.id}}'
+                    (delete)="deleteTask(task.id)"
                     (cancel)="showAlert(task.id)">
   </app-modal-delete>
 </div>

@@ -1,3 +1,4 @@
+<!-- Display the error messages -->
 <div id="form-error" style="display: none; color: red; size: 20px;">
   Remplissez tous les champs
 </div>
@@ -5,14 +6,15 @@
   Erreur lors de l'envoie des données, veuillez verifier votre connexion
 </div>
 
+<!-- Form to change the category's data -->
 <form style="width:25%;" (ngSubmit)="onSubmit()">
-  <div class="form-group has-success">
-    <label class="form-control-label" for="inputSuccess1">Title</label>
+  <div class="form-group">
+    <label class="form-control-label">Title</label>
     <input type="text" class="form-control is-valid" [(ngModel)]="category.title" name="title">
   </div>
 
   <div class="form-group">
-    <label for="exampleTextarea">Description</label>
+    <label>Description</label>
     <textarea class="form-control" rows="3" [(ngModel)]="category.description" name="description"></textarea>
   </div>
 
